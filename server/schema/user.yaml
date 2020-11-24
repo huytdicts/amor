@@ -1,0 +1,7 @@
+user:
+  userId:
+    primary-key: true
+  username:
+    nullable: false
+  password:
+    nullabe: false
