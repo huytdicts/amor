@@ -23,10 +23,10 @@ export class User extends MyBaseEntity<User> {
   email: string;
 
   public hashPassword() {
-      this.password = encryptHelper.hash(this.password);
+    this.password = encryptHelper.hash(this.password);
   }
 
   public comparePassword(hashed: string) {
-      return encryptHelper.compare(this.password, hashed);
+    return encryptHelper.compare(this.password, hashed);
   }
 }
