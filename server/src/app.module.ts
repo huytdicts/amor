@@ -8,6 +8,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { HelperModule } from './helper/helper.module';
 import { UserModule } from './user/user.module';
+import { ValidateModule } from './validate/validate.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
@@ -27,6 +28,7 @@ import { UserModule } from './user/user.module';
     UserModule,
     HelperModule,
     AuthModule,
+    ValidateModule,
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
