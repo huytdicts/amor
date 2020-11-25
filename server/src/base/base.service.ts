@@ -1,9 +1,8 @@
 import { BaseEntity, DeepPartial, DeleteResult, Repository } from 'typeorm';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 import { EntityId } from 'typeorm/repository/EntityId';
-import { IBaseService } from './i.base.service';
 
-export class BaseService<T extends BaseEntity> implements IBaseService<T> {
+export abstract class BaseService<T extends BaseEntity> {
   constructor(private readonly repo: Repository<T>) {}
 
   getByPartial(pt: QueryDeepPartialEntity<T>, relations?: string[]) {

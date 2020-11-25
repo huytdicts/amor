@@ -1,9 +1,9 @@
-import { BaseEntity, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 export abstract class MyBaseEntity<T extends BaseEntity> extends BaseEntity {
   constructor(pt: Partial<T>) {
-      super();
-      Object.assign(this, pt);
+    super();
+    Object.assign(this, pt);
   }
 
   @CreateDateColumn({
