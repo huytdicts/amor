@@ -26,10 +26,10 @@ export class TokenHelper {
     };
   }
 
-  static async verify<T>(token: string, secret: string): Promise<T> {
+  async verify<T>(token: string): Promise<T> {
     return new Promise((resolve, reject) => {
       try {
-        const payload = jwt.verify(token, secret);
+        const payload = jwt.verify(token, this.jwtsecret);
         resolve(payload as any);
       } catch (error) {
         reject(error);

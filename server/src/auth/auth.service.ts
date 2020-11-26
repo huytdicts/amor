@@ -8,7 +8,6 @@ export class AuthService {
 
   async verifyPassword(username: string, password: string): Promise<User> {
     const foundUser = await this.userService.getByPartial({ username });
-    console.log(foundUser);
     const legit = await foundUser.comparePassword(password);
     if (legit) {
       return foundUser;

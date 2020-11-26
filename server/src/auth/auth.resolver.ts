@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { TokenHelper } from 'src/helper/token.helper';
 import { AuthService } from './auth.service';
@@ -10,12 +11,12 @@ export class AuthResolver {
     private readonly authService: AuthService,
     private readonly tokenHelper: TokenHelper,
   ) {}
-  @Mutation(of => TokenDTO)
+  @Mutation(_of => TokenDTO)
   async login(@Args('loginDTO') loginDTO: LoginDTO) {
     const { username, password } = loginDTO;
     const user = await this.authService.verifyPassword(username, password);
     if (user) {
-      return this.tokenHelper.generate(Object.assign({}, user)); //* Jwt generate method only accept plain object
+      return this.tokenHelper.generate(user);
     }
   }
 }
