@@ -9,6 +9,8 @@ import { AuthModule } from './auth/auth.module';
 import { HelperModule } from './helper/helper.module';
 import { UserModule } from './user/user.module';
 import { ValidateModule } from './validate/validate.module';
+import { SongModule } from './song/song.module';
+import { MovieModule } from './movie/movie.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
@@ -32,6 +34,8 @@ import { ValidateModule } from './validate/validate.module';
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
+    SongModule,
+    MovieModule,
   ],
   controllers: [AppController],
   providers: [AppService],
