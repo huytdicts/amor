@@ -5,10 +5,10 @@ function hash(payload: string, saltRounds = 10) {
 }
 
 function compare(payload: string, hashed: string) {
+  console.log(payload + ' ' + hashed);
   return bcrypt.compareSync(payload, hashed);
 }
 export const encryptHelper = {
-    hash,
-    compare
-}
-
+  hash,
+  compare,
+};

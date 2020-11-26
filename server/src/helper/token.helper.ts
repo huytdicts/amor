@@ -1,14 +1,14 @@
+import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as jwt from 'jsonwebtoken';
 
+@Injectable()
 export class TokenHelper {
-
   constructor(private configService: ConfigService) {}
 
   private jwtsecret =
     this.configService.get<string>('JWT_SECRET') || 'sEcurE_pAss';
   private jwtExpriresInSec =
-
     this.configService.get<number>('JWT_EXPSEC') || 3000;
 
   async generate(

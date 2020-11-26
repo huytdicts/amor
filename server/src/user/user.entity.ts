@@ -14,9 +14,8 @@ export class User extends MyBaseEntity<User> {
   @Column({ name: 'username', length: 100, unique: true })
   username: string;
 
-  @Field(type => String)
   @Column({ name: 'password', length: 100 })
-  password: string;
+  private password: string;
 
   @Field(type => String)
   @Column({ name: 'email', length: 100, unique: true })
@@ -26,7 +25,7 @@ export class User extends MyBaseEntity<User> {
     this.password = encryptHelper.hash(this.password);
   }
 
-  public comparePassword(hashed: string) {
-    return encryptHelper.compare(this.password, hashed);
+  public comparePassword(plainPassword: string) {
+    return encryptHelper.compare(plainPassword, this.password);
   }
 }
