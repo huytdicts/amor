@@ -13,7 +13,7 @@ export class UserService extends BaseService<User> {
   }
 
   create(payload: CreateUserDTO) {
-    const newUser = new User({...payload})
+    const newUser = new User({ ...payload });
     newUser.hashPassword();
     return this.userRepository.save(newUser);
   }

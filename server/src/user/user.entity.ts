@@ -2,7 +2,8 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { MyBaseEntity } from 'src/base/base.entity';
 import { encryptHelper } from 'src/helper/encrypt.helper';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Song } from 'src/song/song.entity';
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
 @Entity({ name: 'user' })
@@ -20,6 +21,11 @@ export class User extends MyBaseEntity<User> {
   @Field(type => String)
   @Column({ name: 'email', length: 100, unique: true })
   email: string;
+
+  @Field(type=> Song)
+  @ManyToMany( to => Song)
+  @JoinTable()
+  song: Song[]
 
   public hashPassword() {
     this.password = encryptHelper.hash(this.password);

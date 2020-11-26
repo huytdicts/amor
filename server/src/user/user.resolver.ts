@@ -5,16 +5,16 @@ import { UserService } from './user.service';
 
 @Resolver(_of => User)
 export class UserResolver {
-    constructor(private readonly userService: UserService) {}
-    @Query(_returns => User, {nullable: true}) 
-    async getByUsername(@Args('username', { type: () => String }) username: string) {
-        return this.userService.getByPartial({username: username}) || [];
-    }
+  constructor(private readonly userService: UserService) {}
+  @Query(_returns => User, { nullable: true })
+  async getByUsername(
+    @Args('username', { type: () => String }) username: string,
+  ) {
+    return this.userService.getByPartial({ username: username }) || [];
+  }
 
-    @Mutation( _returns => User)
-    async createUser(@Args('createUserDTO') dto: CreateUserDTO) {
-        return this.userService.create(dto);
-    }
-
-
+  @Mutation(_returns => User)
+  async createUser(@Args('createUserDTO') dto: CreateUserDTO) {
+    return this.userService.create(dto);
+  }
 }
