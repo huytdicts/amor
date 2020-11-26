@@ -12,7 +12,7 @@ import { ValidateModule } from './validate/validate.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule.forRoot()],
+      imports: [ConfigModule.forRoot({ isGlobal: true })],
       useFactory: (configService: ConfigService) => ({
         type: 'mysql',
         port: configService.get<number>('MYSQL_PORT') || 6603, //* In case you don't have a .env file

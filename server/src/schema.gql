@@ -4,8 +4,11 @@
 
 type User {
   userId: String!
-  password: String!
   email: String!
+}
+
+type TokenDTO {
+  token: String!
 }
 
 type Query {
@@ -14,10 +17,16 @@ type Query {
 
 type Mutation {
   createUser(createUserDTO: CreateUserDTO!): User!
+  login(loginDTO: LoginDTO!): TokenDTO!
 }
 
 input CreateUserDTO {
   username: String!
   password: String!
   email: String!
+}
+
+input LoginDTO {
+  username: String!
+  password: String!
 }
