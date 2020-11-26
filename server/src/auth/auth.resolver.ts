@@ -16,7 +16,7 @@ export class AuthResolver {
     const { username, password } = loginDTO;
     const user = await this.authService.verifyPassword(username, password);
     if (user) {
-      return this.tokenHelper.generate(user);
+      return this.tokenHelper.generate(Object.assign({}, user));
     }
   }
 }

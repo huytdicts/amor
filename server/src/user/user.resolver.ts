@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CreateUserDTO } from './model/user-create.dto';
 import { User } from './user.entity';

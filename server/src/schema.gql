@@ -2,9 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Song {
+  spotifyId: String!
+}
+
 type User {
   userId: String!
   email: String!
+  song: Song
 }
 
 type TokenDTO {
@@ -13,11 +18,13 @@ type TokenDTO {
 
 type Query {
   getByUsername(username: String!): User
+  getSongsByUserID: [Song!]
 }
 
 type Mutation {
   createUser(createUserDTO: CreateUserDTO!): User!
   login(loginDTO: LoginDTO!): TokenDTO!
+  createSong(CreateSongDTO: CreateSongDTO!): [Song!]!
 }
 
 input CreateUserDTO {
@@ -29,4 +36,13 @@ input CreateUserDTO {
 input LoginDTO {
   username: String!
   password: String!
+}
+
+input CreateSongDTO {
+  userId: String
+  song: [SongDTO!]!
+}
+
+input SongDTO {
+  spotifyId: String!
 }

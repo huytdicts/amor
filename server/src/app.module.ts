@@ -33,6 +33,7 @@ import { MovieModule } from './movie/movie.module';
     ValidateModule,
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      context: ({ req }) => ({ headers: req.headers }),
     }),
     SongModule,
     MovieModule,

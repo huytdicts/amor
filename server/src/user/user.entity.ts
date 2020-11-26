@@ -22,7 +22,7 @@ export class User extends MyBaseEntity<User> {
   @Column({ name: 'email', length: 100, unique: true })
   email: string;
 
-  @Field(type=> Song)
+  @Field(type=> Song, {nullable: true})
   @ManyToMany( to => Song)
   @JoinTable()
   song: Song[]

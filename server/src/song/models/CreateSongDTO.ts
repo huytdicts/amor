@@ -1,11 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, InputType } from '@nestjs/graphql';
 
-@ObjectType()
+@InputType()
 export class CreateSongDTO {
-  @Field(_type => String)
+  @Field(_type => String, { nullable: true })
   userId: string;
 
+  @Field(_type => [SongDTO])
+  song: SongDTO[];
+}
+
+@InputType()
+export class SongDTO {
   @Field(_type => String)
   spotifyId: string;
 }
